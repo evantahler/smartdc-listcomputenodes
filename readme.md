@@ -2,7 +2,7 @@
 List your joyent machines by the compute node they are running on.  Ensure your workload is distributed!
 
 ## Install
-`npm install smartdc-compute-nodes -g`
+`npm install smartdc-computenodes -g`
 
 ## Use 
 `sdc-computenodes`
