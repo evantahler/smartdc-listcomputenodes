@@ -6,8 +6,9 @@ var util = require('util');
 
 var foramts = {
   human: function(data){
-    console.log("Compute Nodes:\r\n");
+    console.log("Compute Nodes:");
     for(var computeNode in data){
+      console.log("");
       console.log(computeNode + " (" + Object.keys(data[computeNode]).length + ")");
       for(var i in data[computeNode]){
         var simpleHost = data[computeNode][i];

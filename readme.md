@@ -1,20 +1,20 @@
-# smartdc-compute-nodes
+# smartdc-listcomputenodes
 List your joyent machines by the compute node they are running on.  Ensure your workload is distributed!
 
 ## Install
-`npm install smartdc-computenodes -g`
+`npm install smartdc-listcomputenodes -g`
 
 ## Use 
-`sdc-computenodes`
+`sdc-listcomputenodes`
 
 The only option is `--format`, which can be `json` or `human`
 
 ## Example
 
-`sdc-computenodes --format human`
+`sdc-listcomputenodes --format human`
 
 ```bash
-> ./bin/sdc-computenodes --format human
+> ./bin/sdc-listcomputenodes --format human
 Compute Nodes:
 
 xxx-xxx-xxx (2)
