@@ -1,7 +1,7 @@
 {
   "author": "Evan Tahler <evantahler@gmail.com>",
-  "name": "smartdc-compute-nodes",
-  "description": "xxx",
+  "name": "smartdc-computenodes",
+  "description": "List your joyent machines by the compute node they are running on.  Ensure your workload is distributed!",
   "version": "0.0.1",
   "repository": {
     "type": "git",
