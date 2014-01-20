@@ -1,0 +1,21 @@
+{
+  "author": "Evan Tahler <evantahler@gmail.com>",
+  "name": "smartdc-compute-nodes",
+  "description": "xxx",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evantahler/smartdc-compute-nodes.git"
+  },
+  "keywords": ["joyent", "smartdc", "smart-dc", "datacenter", "compute", "nodes", "servers", "host"],
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "dependencies": {
+    "smartdc" :"7.x.x",
+    "optimist":"0.6.x"
+  },
+  "bin": {
+    "sdc-computenodes": "./bin/sdc-computenodes"
+  }
+}

@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+var common = require(__dirname + "/../lib/common.js").common;
+var argv = require('optimist').argv;
+var util = require('util');
+
+var foramts = {
+  human: function(data){
+    console.log("Compute Nodes:\r\n");
+    for(var computeNode in data){
+      console.log(computeNode + " (" + Object.keys(data[computeNode]).length + ")");
+      for(var i in data[computeNode]){
+        var simpleHost = data[computeNode][i];
+        console.log(" - " + simpleHost.name + " @ " + simpleHost.ips);
+      }
+    }
+  },
+  json: function(results){
+    console.log(util.inspect(results, false, 10, true));
+  },
+};
+
+common.listMachines(function(err, hosts){
+  if(err != null){
+    console.log("[error] " + String(err));
+  }else{
+    var data = {};
+    hosts.forEach(function(host){
+      var simpleHost = {
+        id:   host.id,
+        name: host.name,
+        ips:  host.ips,
+      }
+      if(data[host.compute_node] == null){
+        data[host.compute_node] = {};
+      }
+      data[host.compute_node][simpleHost.id] = simpleHost;
+    });
+
+    var orderedNodes = [];
+    for(var i in data){
+      orderedNodes.push(i)
+    }
+    orderedNodes.sort(function(a,b){
+      if(Object.keys(data[a]).length < Object.keys(data[b]).length){ return 1; }
+      if(Object.keys(data[a]).length > Object.keys(data[b]).length){ return -1; }
+      if(Object.keys(data[a]).length === Object.keys(data[b]).length){ return 0; }
+    });
+
+    var sortedData = {};
+    orderedNodes.forEach(function(computeNode){
+      sortedData[computeNode] = data[computeNode];
+    }); 
+
+    var format = "json";
+    if(argv.format != null){
+      if(typeof foramts[argv.format] === 'function'){
+        format = argv.format;
+      }
+    }
+    foramts[format](sortedData);
+  }
+
+  process.nextTick(function(){ process.exit(); });
+});
