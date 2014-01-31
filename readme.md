@@ -14,7 +14,7 @@ The only option is `--format`, which can be `json` or `human`
 `sdc-listcomputenodes --format human`
 
 ```bash
-> ./bin/sdc-listcomputenodes --format human
+> sdc-listcomputenodes --format human
 Compute Nodes:
 
 xxx-xxx-xxx (2)
